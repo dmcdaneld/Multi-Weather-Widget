@@ -1,0 +1,161 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    width: 80%;
+    max-width: 1200px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#input-form {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#input-form h2 {
+    margin-bottom: 10px;
+}
+
+#city-input {
+    padding: 10px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+#input-form button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+#input-form button:hover {
+    background-color: #0056b3;
+}
+
+#weather-type, #units {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-right: 5px;
+}
+
+#include-map-label {
+    display: inline-block;
+    padding: 10px;
+    margin-top: 10px;
+    margin-right: 5px;
+}
+
+#city-list {
+    margin-top: 10px;
+    text-align: center;
+}
+
+#city-list p {
+    display: inline-block;
+    background: #e9ecef;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.weather-widget {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.weather-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.weather-text {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.weather-icon {
+    font-size: 48px;
+    margin-bottom: 10px;
+    padding-top: 10px; /* Added padding for icons */
+}
+
+.location, .temperature, .description {
+    margin: 5px 0;
+    font-size: 1.2em;
+}
+
+.temperature {
+    font-weight: bold;
+}
+
+.forecast {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 18%;
+}
+
+.day-name {
+    font-size: 0.9em;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.forecast-icon {
+    font-size: 36px;
+    margin-bottom: 5px;
+}
+
+.forecast-temp {
+    font-weight: bold;
+}
+
+.map {
+    width: 100%;
+    height: 300px;
+    margin-top: 20px;
+}
+
+.weather-widget.no-map {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.weather-widget.no-map .weather-info {
+    flex: 1;
+    margin-right: 20px;
+}

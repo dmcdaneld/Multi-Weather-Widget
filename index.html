@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-City Weather</title>
+    <!-- Link to external CSS and Weather Icons stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        #container {
+            width: 80%;
+            max-width: 1200px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #input-form {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #input-form h2 {
+            margin-bottom: 10px;
+        }
+        #city-input {
+            padding: 10px;
+            width: 275px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        #input-form button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        #input-form button:hover {
+            background-color: #0056b3;
+        }
+        #weather-type, #units {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 10px;
+            margin-right: 5px;
+        }
+        #include-map-label {
+            display: inline-block;
+            padding: 10px;
+            margin-top: 10px;
+            margin-right: 5px;
+        }
+        #city-list {
+            margin-top: 10px;
+            text-align: center;
+        }
+        #city-list p {
+            display: inline-block;
+            background: #e9ecef;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin: 5px;
+        }
+        .weather-widget {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .weather-info {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            align-items: center;
+        }
+        .weather-text {
+            flex: 1;
+            margin-right: 20px;
+        }
+        .weather-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+            padding-top: 10px; /* Added padding for icons */
+        }
+        .location, .temperature, .description {
+            margin: 5px 0;
+            font-size: 1.2em;
+        }
+        .temperature {
+            font-weight: bold;
+        }
+        .forecast {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .day {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 18%;
+        }
+        .day-name {
+            font-size: 0.9em;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .forecast-icon {
+            font-size: 36px;
+            margin-bottom: 5px;
+        }
+        .forecast-temp {
+            font-weight: bold;
+        }
+        .map {
+            width: 100%;
+            height: 300px;
+            margin-top: 20px;
+        }
+        .weather-widget.no-map .weather-info {
+            flex-direction: column;
+        }
+        .weather-widget.no-map .forecast {
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+    </style>
+</head>
+<body>
+    <!-- Container to center and style the entire content -->
+    <div id="container">
+        <!-- Input form for users to enter city names -->
+        <div id="input-form">
+            <h2>Multi-City Weather</h2>
+            <input type="text" id="city-input" placeholder="Enter City / City, State / or City, State, Country">
+            <button onclick="addCity()">Add City</button>
+            <button onclick="getWeatherForCities()">Get Weather</button>
+            <!-- Option to select weather type (current or 5-day forecast) -->
+            <select id="weather-type">
+                <option value="current">Current Weather</option>
+                <option value="forecast">Current + 5-Day Forecast</option>
+            </select>
+            <!-- Option to select units (metric or imperial) -->
+            <select id="units">
+                <option value="imperial">US</option>
+                <option value="metric">Metric</option>
+            </select>
+            <!-- Checkbox to include or exclude the map -->
+            <label id="include-map-label">
+                <input type="checkbox" id="include-map" checked> Include Map
+            </label>
+            <!-- Div to display the list of entered cities -->
+            <div id="city-list"></div>
+        </div>
+        <!-- Div to hold the weather widgets -->
+        <div id="weather-widgets"></div>
+    </div>
+    <!-- Link to external JavaScript file -->
+    <script src="script.js"></script>
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+</body>
+</html>
